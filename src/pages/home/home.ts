@@ -20,9 +20,7 @@ export class HomePage {
   }
 
   play() {
-    this.player.play().then(() => {
-      console.log('Playing');
-    });
+    this.player.play();
     this.playFlag = true;
     this.src = 'assets/stop.png';
 

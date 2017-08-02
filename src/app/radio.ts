@@ -1,17 +1,29 @@
 /**
  * Created by ntutikyan on 24.05.2017.
  */
-export class RadioPlayer {
-  url:string;
-  stream:any;
-  promise:any;
 
-  constructor() {
-    this.url = "http://s8.myradiostream.com/15554/listen.mp3";
-    this.stream = new Audio(this.url);
-  };
+import {StreamingAudioOptions, StreamingMedia} from '@ionic-native/streaming-media';
+import {Injectable}    from '@angular/core';
+
+@Injectable()
+export class RadioPlayer {
+
+  promise: any;
+
+  constructor(private streamingMedia: StreamingMedia) {
+  }
+
+  url = "http://s8.myradiostream.com/15554/listen.mp3";
+  stream = new Audio(this.url);
+
+  // private options: StreamingAudioOptions = {
+  // successCallback: () => { console.log('Video played') },
+  // errorCallback: (e) => { console.log('Error streaming') },
+  //   initFullscreen: false
+  // };
 
   play() {
+    // this.streamingMedia.playAudio(this.url, this.options);
     this.stream.play();
     this.promise = new Promise((resolve,reject) => {
       this.stream.addEventListener('playing', () => {
@@ -27,6 +39,7 @@ export class RadioPlayer {
 
   pause() {
     this.stream.pause();
+    // this.streamingMedia.stopAudio();
   };
 
 }

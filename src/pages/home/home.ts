@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {RadioPlayer} from '../../app/radio';
 import { StatusBar } from '@ionic-native/status-bar';
+import { BackgroundMode } from '@ionic-native/background-mode';
 
 @Component({
   selector: 'page-home',
@@ -15,11 +16,14 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,
             private player: RadioPlayer,
-              private statusBar: StatusBar) {
+              private statusBar: StatusBar,
+          private backgroundMode: BackgroundMode) {
 
   }
+  url = "http://s8.myradiostream.com/15554/listen.mp3";
 
   play() {
+    this.backgroundMode.enable();
     this.player.play();
     this.playFlag = true;
     this.src = 'assets/stop.png';
@@ -27,6 +31,7 @@ export class HomePage {
   }
 
   pause() {
+    this.backgroundMode.disable().then();
     this.player.pause();
     this.playFlag = false;
     this.src =  'assets/play.png';

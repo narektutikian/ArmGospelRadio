@@ -3,10 +3,11 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import {StreamingMedia} from '@ionic-native/streaming-media';
+import { BackgroundMode } from '@ionic-native/background-mode';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { HomePage } from '../pages/home/home';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    StreamingMedia
+    BackgroundMode
   ]
 })
 export class AppModule {}
